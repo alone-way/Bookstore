@@ -57,7 +57,6 @@
             <span class="order_span">订单状态<span class="b_price">
                 <c:if test="${order.status==0}">
                     <span>未发货</span>
-                    <span class="order_span"><a href="#">确认收货</a></span>
                 </c:if>
                 <c:if test="${order.status==1}">
                     <span>已发货</span>
