@@ -27,6 +27,12 @@ public interface OrderService {
      */
     List<OrderItem> orderDetail(String orderId);
 
+    /**
+     * 根据订单id查询订单
+     * @param orderId 订单id
+     * @return 订单对象
+     */
+    Order queryOrderByOrderId(String orderId);
 
     /**
      * 查询指定用户的所有订单

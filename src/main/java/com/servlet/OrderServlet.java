@@ -2,6 +2,7 @@ package com.servlet;
 
 import com.pojo.Cart;
 import com.pojo.Order;
+import com.pojo.OrderItem;
 import com.pojo.User;
 import com.service.OrderService;
 import com.service.impl.OrderServiceImpl;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * @Description 处理订单相关请求b
+ * @Description 处理订单相关请求
  * @Author OneIce
  * @Date 2021/1/21 23:57
  */
@@ -45,13 +46,29 @@ public class OrderServlet extends BaseServlet {
     /** 查看我的订单列表 */
     protected void myOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
-        //取出用户id
+        //取出用户信息
         User user = (User) session.getAttribute("user");
         //根据用户id查询所有订单
         List<Order> orders = orderService.queryMyOrders(user.getId());
-        //将订单信息存于Session域
-        session.setAttribute("orders", orders);
+        //将订单信息存入Request域
+        req.setAttribute("orders", orders);
         //转发到页面列表页面: /pages/order/order.jsp
         req.getRequestDispatcher("/pages/order/order.jsp").forward(req, resp);
     }
+
+    /** 查看订单详情 */
+    protected void orderDetail(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //获取订单号
+        String  orderId = req.getParameter("orderId");
+        //查询订单
+        Order order = orderService.queryOrderByOrderId(orderId);
+        //查询订单的所有订单项
+        List<OrderItem> orderItems = orderService.orderDetail(orderId);
+        //将订单和订单项信息存入Request域
+        req.setAttribute("order", order);
+        req.setAttribute("orderItems", orderItems);
+        //转发到订单详情页面: /pages/order/order_detail.jsp
+        req.getRequestDispatcher("/pages/order/order_detail.jsp").forward(req, resp);
+    }
+
 }

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>我的订单</title>
+    <title>订单详情</title>
     <%@include file="../common/head.jsp" %>
     <style type="text/css">
         h1 {
@@ -29,22 +29,22 @@
             <td>状态</td>
             <td>详情</td>
         </tr>
-        <c:forEach var="order" items="${sessionScope.orders}">
+        <c:forEach var="order" items="${requestScope.orders}">
             <tr>
                 <td>${order.createTime}</td>
                 <td>${order.price}</td>
                 <td>
                     <c:if test="${order.status==0}">
-                        未发货
+                        <span>未发货</span>
                     </c:if>
                     <c:if test="${order.status==1}">
-                        已发货
+                        <span>已发货</span>
                     </c:if>
                     <c:if test="${order.status==2}">
-                        已收货
+                        <span>已收货</span>
                     </c:if>
                 </td>
-                <td><a href="#">查看详情</a></td>
+                <td><a href="OrderServlet?action=orderDetail&orderId=${order.orderId}">查看详情</a></td>
             </tr>
         </c:forEach>
     </table>

@@ -55,7 +55,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderItem> orderDetail(String orderId) {
-        return null;
+        return orderDao.queryOrderDetailByOrderId(orderId);
+    }
+
+    @Override
+    public Order queryOrderByOrderId(String orderId) {
+        return orderDao.queryOrderByOrderId(orderId);
     }
 
     @Override

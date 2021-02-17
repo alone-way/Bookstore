@@ -2,6 +2,7 @@ package com.dao.impl;
 
 import com.dao.OrderDao;
 import com.pojo.Order;
+import com.pojo.OrderItem;
 
 import java.util.List;
 
@@ -25,8 +26,20 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
     }
 
     @Override
+    public Order queryOrderByOrderId(String orderId) {
+        String sql = "select order_id, create_time, price, status, user_id from t_order where  order_id=?";
+        return queryForOne(sql, Order.class, orderId);
+    }
+
+    @Override
     public int changeOrderStatus(String orderId, int status) {
         String sql = "update t_order set `status`=? where order_id=?";
         return update(sql, status, orderId);
+    }
+
+    @Override
+    public List<OrderItem> queryOrderDetailByOrderId(String orderId) {
+        String sql = "select id,`name`,count,price,total_price,order_id from t_order_item where order_id=?";
+        return queryForList(sql, OrderItem.class, orderId);
     }
 }
