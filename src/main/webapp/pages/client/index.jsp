@@ -31,9 +31,9 @@
         <%--如果用户已登录, 显示购物车, 后台管理等菜单--%>
         <c:if test="${not empty sessionScope.user}">
             <span>欢迎<span class="um_span">${sessionScope.user.username}</span>光临尚硅谷书城</span>
-            <a href="${pageContext.request.contextPath}/UserServlet?action=logout">注销</a>&nbsp;&nbsp;
+            <a href="UserServlet?action=logout">注销</a>&nbsp;&nbsp;
             <a href="pages/cart/cart.jsp">购物车</a>
-            <a href="${pageContext.request.contextPath}/pages/order/order.jsp">我的订单</a>
+            <a href="OrderServlet?action=myOrders">我的订单</a>
             <a href="pages/manager/manager.jsp">后台管理</a>
         </c:if>
     </div>
