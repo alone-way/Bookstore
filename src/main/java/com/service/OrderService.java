@@ -29,11 +29,11 @@ public interface OrderService {
 
 
     /**
-     * 查询指定用户的订单
+     * 查询指定用户的所有订单
      * @param userId 用户id
      * @return 订单
      */
-    Order queryMyOrder(int userId);
+    List<Order> queryMyOrders(int userId);
 
     /**
      * 查询所有订单

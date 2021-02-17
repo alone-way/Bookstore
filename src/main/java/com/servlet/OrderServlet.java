@@ -1,15 +1,18 @@
 package com.servlet;
 
 import com.pojo.Cart;
+import com.pojo.Order;
 import com.pojo.User;
 import com.service.OrderService;
 import com.service.impl.OrderServiceImpl;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -21,6 +24,7 @@ import java.util.Objects;
 public class OrderServlet extends BaseServlet {
     private OrderService orderService = new OrderServiceImpl();
 
+    /** 处理结账请求 */
     protected void checkout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         HttpSession session = req.getSession(false);
         if (session != null) {
@@ -36,5 +40,18 @@ public class OrderServlet extends BaseServlet {
         } else {
             resp.sendRedirect(req.getContextPath() + "/user/login.jsp");
         }
+    }
+
+    /** 查看我的订单列表 */
+    protected void myOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession(false);
+        //取出用户id
+        User user = (User) session.getAttribute("user");
+        //根据用户id查询所有订单
+        List<Order> orders = orderService.queryMyOrders(user.getId());
+        //将订单信息存于Session域
+        session.setAttribute("orders", orders);
+        //转发到页面列表页面: /pages/order/order.jsp
+        req.getRequestDispatcher("/pages/order/order.jsp").forward(req, resp);
     }
 }

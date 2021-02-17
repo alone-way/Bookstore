@@ -59,8 +59,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order queryMyOrder(int userId) {
-        return null;
+    public List<Order> queryMyOrders(int userId) {
+        return orderDao.queryMyOrders(userId);
     }
 
     @Override

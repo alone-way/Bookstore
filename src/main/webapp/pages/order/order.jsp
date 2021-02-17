@@ -1,9 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>我的订单</title>
-    <%@include file="../common/head.jsp"%>
+    <%@include file="../common/head.jsp" %>
     <style type="text/css">
         h1 {
             text-align: center;
@@ -28,31 +29,29 @@
             <td>状态</td>
             <td>详情</td>
         </tr>
-        <tr>
-            <td>2015.04.23</td>
-            <td>90.00</td>
-            <td>未发货</td>
-            <td><a href="#">查看详情</a></td>
-        </tr>
-
-        <tr>
-            <td>2015.04.20</td>
-            <td>20.00</td>
-            <td>已发货</td>
-            <td><a href="#">查看详情</a></td>
-        </tr>
-
-        <tr>
-            <td>2014.01.23</td>
-            <td>190.00</td>
-            <td>已完成</td>
-            <td><a href="#">查看详情</a></td>
-        </tr>
+        <c:forEach var="order" items="${sessionScope.orders}">
+            <tr>
+                <td>${order.createTime}</td>
+                <td>${order.price}</td>
+                <td>
+                    <c:if test="${order.status==0}">
+                        未发货
+                    </c:if>
+                    <c:if test="${order.status==1}">
+                        已发货
+                    </c:if>
+                    <c:if test="${order.status==2}">
+                        已收货
+                    </c:if>
+                </td>
+                <td><a href="#">查看详情</a></td>
+            </tr>
+        </c:forEach>
     </table>
 
 
 </div>
 
-<%@include file="../common/footer.jsp"%>
+<%@include file="../common/footer.jsp" %>
 </body>
 </html>
