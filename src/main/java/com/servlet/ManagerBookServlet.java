@@ -19,7 +19,7 @@ import java.util.List;
  * @Date 2020/12/3 19:55
  */
 @WebServlet("/manager/BookServlet")
-public class BookServlet extends BaseServlet {
+public class ManagerBookServlet extends BaseServlet {
     private final BookService bookService = new BookServiceImpl();
 
     /** 处理分页请求, 获得Page对象, 然后转发到 /pages/manager/book_manager.jsp */
