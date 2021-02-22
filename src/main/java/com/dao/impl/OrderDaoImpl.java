@@ -48,4 +48,10 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
         String sql = "select status from t_order where order_id = ?";
         return (int) queryForSingleValue(sql, orderId);
     }
+
+    @Override
+    public List<Order> allOrders() {
+        String sql = "select order_id, create_time, price, status, user_id from t_order;";
+        return queryForList(sql, Order.class);
+    }
 }
