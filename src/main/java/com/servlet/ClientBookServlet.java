@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @Description 处理前台的图书相关请求
+ * @Description 处理主页上的图书相关请求
  * @Author IceCube
  * @Date 2020/12/13 21:15
  */
