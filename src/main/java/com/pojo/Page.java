@@ -1,6 +1,7 @@
 package com.pojo;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,9 +9,10 @@ import java.util.List;
  * @Author IceCube
  * @Date 2020/12/12 20:46
  */
-public class Page<T> {
+public class Page<T> implements Serializable {
     public static final Integer PAGE_SIZE = 4; //默认页大小
     public static final Integer MAX_PAGE_SIZE = 30; //最大页大小
+    private static final long serialVersionUID = 2916853673773967720L;
     private Integer pageTotal; //总页数
     private Integer pageTotalCount; //总记录数
     private Integer pageNo; //当前页码
@@ -52,7 +54,7 @@ public class Page<T> {
     }
 
     public void setPageNo(Integer pageNo) {
-        if(pageTotal == null){
+        if (pageTotal == null) {
             throw new RuntimeException("请先设置pageTotal");
         }
         //必须先设置pageTotal, 再设置pageNo, 避免空指针异常
@@ -63,16 +65,16 @@ public class Page<T> {
         }
     }
 
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
     public void setPageSize(Integer pageSize) {
         if (pageSize > 0 && pageSize <= MAX_PAGE_SIZE) {
             this.pageSize = pageSize;
         } else {
             this.pageSize = PAGE_SIZE;
         }
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
     }
 
     public List<T> getItems() {

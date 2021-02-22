@@ -1,5 +1,6 @@
 package com.pojo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -8,7 +9,8 @@ import java.sql.Timestamp;
  * @Author OneIce
  * @Date 2021/1/21 16:59
  */
-public class Order {
+public class Order implements Serializable {
+    private static final long serialVersionUID = 6264111272179828920L;
     private String orderId; //订单编号
     private Timestamp createTime; //创建时间
     private BigDecimal price; //订单价格

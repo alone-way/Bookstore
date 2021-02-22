@@ -1,7 +1,10 @@
 package com.pojo;
 
-public class Book {
-    
+import java.io.Serializable;
+
+public class Book implements Serializable {
+
+    private static final long serialVersionUID = 3792488105248258110L;
     private Integer id;
     private String name;
     private String author;

@@ -1,5 +1,6 @@
 package com.pojo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -7,7 +8,8 @@ import java.math.BigDecimal;
  * @Author OneIce
  * @Date 2021/1/21 17:06
  */
-public class OrderItem {
+public class OrderItem implements Serializable {
+    private static final long serialVersionUID = 9170294652039349360L;
     private Integer id; //订单项id(主键)
     private String name; //商品名称
     private Integer count; //商品个数

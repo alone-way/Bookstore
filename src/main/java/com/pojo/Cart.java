@@ -1,7 +1,6 @@
 package com.pojo;
 
-import com.google.gson.JsonElement;
-
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +10,8 @@ import java.util.Map;
  * @Author OneIce
  * @Date 2021/1/20 15:56
  */
-public class Cart {
+public class Cart implements Serializable {
+    private static final long serialVersionUID = -2243771653523724286L;
     private Integer totalCount = 0; //总商品个数
     private BigDecimal totalPrice = new BigDecimal(0); //总商品价格
     private Map<Integer, CartItem> items = new HashMap<>(); //购物车中的商品, key是商品编号
