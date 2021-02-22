@@ -72,7 +72,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void sendOrder(String orderId) {
-
+        orderDao.changeOrderStatus(orderId, 1);
     }
 
     @Override

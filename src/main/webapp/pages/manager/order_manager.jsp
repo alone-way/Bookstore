@@ -26,8 +26,18 @@
             <tr>
                 <td>${order.createTime}</td>
                 <td>${order.price}</td>
-                <td><a href="#">查看详情</a></td>
-                <td><a href="#">点击发货</a></td>
+                <td><a href="OrderServlet?action=orderDetail&orderId=${order.orderId}">查看详情</a></td>
+                <td>
+                    <c:if test="${order.status==0}">
+                        <a href="manager/OrderServlet?action=sendOrder&orderId=${order.orderId}">点击发货</a>
+                    </c:if>
+                    <c:if test="${order.status==1}">
+                        <span>已发货</span>
+                    </c:if>
+                    <c:if test="${order.status==2}">
+                        <span>已收货</span>
+                    </c:if>
+                </td>
             </tr>
         </c:forEach>
     </table>

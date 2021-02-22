@@ -24,10 +24,11 @@ public class ManagerOrderServlet extends BaseServlet {
     /** 订单发货 */
     protected void sendOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         //获取订单编号
-
+        String orderId = req.getParameter("orderId");
         //进行发货
-
+        orderService.sendOrder(orderId);
         //重定向到订单管理页面
+        resp.sendRedirect(req.getContextPath() + "/manager/OrderServlet?action=allOrders");
     }
 
     /** 查看所有订单 */
