@@ -6,10 +6,7 @@ import com.dao.OrderItemDao;
 import com.dao.impl.BookDaoImpl;
 import com.dao.impl.OrderDaoImpl;
 import com.dao.impl.OrderItemDaoImpl;
-import com.pojo.Book;
-import com.pojo.Cart;
-import com.pojo.Order;
-import com.pojo.OrderItem;
+import com.pojo.*;
 import com.service.OrderService;
 
 import java.sql.Timestamp;
@@ -79,7 +76,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void receiveOrder(String orderId) {
-
+    public void receiveOrder(String orderId, Integer userId) {
+        //检查订单状态 (已发货状态才能收货)
+        int status = orderDao.queryOrderStatus(orderId);
+        if (status == 1) {
+            //确认收货
+            orderDao.changeOrderStatus(orderId, 2);
+        }
     }
 }

@@ -35,4 +35,5 @@ public interface OrderDao {
      */
     List<OrderItem> queryOrderDetailByOrderId(String orderId);
 
+    int queryOrderStatus(String orderId);
 }

@@ -59,7 +59,7 @@ public class OrderServlet extends BaseServlet {
     /** 查看订单详情 */
     protected void orderDetail(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取订单号
-        String  orderId = req.getParameter("orderId");
+        String orderId = req.getParameter("orderId");
         //查询订单
         Order order = orderService.queryOrderByOrderId(orderId);
         //查询订单的所有订单项
@@ -70,5 +70,18 @@ public class OrderServlet extends BaseServlet {
         //转发到订单详情页面: /pages/order/order_detail.jsp
         req.getRequestDispatcher("/pages/order/order_detail.jsp").forward(req, resp);
     }
+
+    /** 确认收货 */
+    protected void receiveOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        //获取订单号
+        String orderId = req.getParameter("orderId");
+        //获取用户信息
+        User user = (User) req.getSession(false).getAttribute("user");
+        //确认收货
+        orderService.receiveOrder(orderId, user.getId());
+        //重定向到订单详情页面
+        resp.sendRedirect(req.getContextPath() + "/OrderServlet?action=orderDetail&" + "orderId=" + orderId);
+    }
+
 
 }

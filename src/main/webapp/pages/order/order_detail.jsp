@@ -60,7 +60,9 @@
                 </c:if>
                 <c:if test="${order.status==1}">
                     <span>已发货</span>
-                    <span class="order_span"><a href="#">确认收货</a></span>
+                    <span class="order_span"><a
+                            href="OrderServlet?action=receiveOrder&orderId=${requestScope.order.orderId}">确认收货
+                    </a></span>
                 </c:if>
                 <c:if test="${order.status==2}">
                     <span>已收货</span>

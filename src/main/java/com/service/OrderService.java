@@ -56,7 +56,8 @@ public interface OrderService {
     /**
      * 订单收货
      * @param orderId 要收货的订单编号
+     * @param user
      */
-    void receiveOrder(String orderId);
+    void receiveOrder(String orderId, Integer user);
 
 }
