@@ -9,9 +9,9 @@
 * 分页查看订单
 * 订单发货
 
-需要的小伙伴可以参考一下，觉得有用的话右上角点一下 `Star` 哦！
-
 > 个人笔记请见[书城项目笔记](https://www.wolai.com/oneice/h1fuDUbZvA2zyqeuk715qP?theme=light)。
+
+*觉得有用的话右上角点一下 `Star` 哦！*
 
 #### 注意事项
 
