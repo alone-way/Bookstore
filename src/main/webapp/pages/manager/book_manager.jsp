@@ -62,7 +62,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><a href="book_edit.jsp?pageNo=${requestScope.page.pageTotal}">添加图书</a></td>
+            <td><a href="pages/manager/book_edit.jsp?pageNo=${requestScope.page.pageTotal}">添加图书</a></td>
         </tr>
     </table>
     <br/>
