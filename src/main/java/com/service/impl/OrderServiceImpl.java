@@ -66,11 +66,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> allOrders() {
-        return orderDao.allOrders();
-    }
-
-    @Override
     public void sendOrder(String orderId) {
         orderDao.changeOrderStatus(orderId, 1);
     }
@@ -83,5 +78,25 @@ public class OrderServiceImpl implements OrderService {
             //确认收货
             orderDao.changeOrderStatus(orderId, 2);
         }
+    }
+
+    @Override
+    public Page<Order> page(int pageNo, int pageSize) {
+        Page<Order> page = new Page<>();
+        //1.设置总记录数
+        int pageTotalCount = orderDao.queryTotalCount();
+        page.setPageTotalCount(pageTotalCount);
+        //2.设置页大小
+        page.setPageSize(pageSize);
+        //3.设置总页数
+        int pageTotal = (int) Math.ceil(pageTotalCount * 1.0 / pageSize);
+        page.setPageTotal(pageTotal);
+        //3.设置页码
+        page.setPageNo(pageNo);
+        //4.求当前页数据
+        int begin = (page.getPageNo() - 1) * page.getPageSize(); //起始索引
+        List<Order> orders = orderDao.queryOrdersByLimit(begin, page.getPageSize());
+        page.setItems(orders);
+        return page;
     }
 }

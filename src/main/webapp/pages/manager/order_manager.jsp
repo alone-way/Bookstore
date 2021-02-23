@@ -17,19 +17,22 @@
 <div id="main">
     <table>
         <tr>
+            <td>编号</td>
             <td>日期</td>
             <td>金额</td>
             <td>详情</td>
             <td>发货</td>
         </tr>
-        <c:forEach var="order" items="${requestScope.orders}">
+        <c:forEach var="order" items="${requestScope.page.items}">
             <tr>
+                <td>${order.orderId}</td>
                 <td>${order.createTime}</td>
                 <td>${order.price}</td>
                 <td><a href="OrderServlet?action=orderDetail&orderId=${order.orderId}">查看详情</a></td>
                 <td>
                     <c:if test="${order.status==0}">
-                        <a href="manager/OrderServlet?action=sendOrder&orderId=${order.orderId}">点击发货</a>
+                        <a href="manager/OrderServlet?action=sendOrder&orderId=${order.orderId}&pageNo=${requestScope.page.pageNo}&pageSize=${requestScope.page.pageSize}">
+                            点击发货</a>
                     </c:if>
                     <c:if test="${order.status==1}">
                         <span>已发货</span>
@@ -40,7 +43,8 @@
                 </td>
             </tr>
         </c:forEach>
-    </table>
+    </table><br/>
+    <%@include file="../common/page_nav.jsp"%>
 </div>
 
 <%@include file="../common/footer.jsp" %>

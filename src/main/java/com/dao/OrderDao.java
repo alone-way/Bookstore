@@ -35,7 +35,12 @@ public interface OrderDao {
      */
     List<OrderItem> queryOrderDetailByOrderId(String orderId);
 
+    /** 查询订单状态 */
     int queryOrderStatus(String orderId);
 
-    List<Order> allOrders();
+    /** 查询总订单数 */
+    int queryTotalCount();
+
+    /** 根据起始索引和个数查找订单 */
+    List<Order> queryOrdersByLimit(int begin, int size);
 }

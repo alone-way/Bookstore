@@ -3,6 +3,7 @@ package com.service;
 import com.pojo.Cart;
 import com.pojo.Order;
 import com.pojo.OrderItem;
+import com.pojo.Page;
 
 import java.util.List;
 
@@ -42,12 +43,6 @@ public interface OrderService {
     List<Order> queryMyOrders(int userId);
 
     /**
-     * 查询所有订单
-     * @return 包含所有订单的List
-     */
-    List<Order> allOrders();
-
-    /**
      * 订单发货
      * @param orderId 要发货的订单编号
      */
@@ -60,4 +55,6 @@ public interface OrderService {
      */
     void receiveOrder(String orderId, Integer user);
 
+    /** 分页查看指定页码的订单 */
+    Page<Order> page(int pageNo, int pageSize);
 }
