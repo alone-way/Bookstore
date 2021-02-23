@@ -47,10 +47,10 @@
                 <td>${book.author}</td>
                 <td>${book.sales}</td>
                 <td>${book.stock}</td>
-                <td><a href="${pageContext.request.contextPath}/${requestScope.page.url}?action=getBook&id=${book.id}&pageNo=${requestScope.page.pageNo}">修改</a>
+                <td><a href="${pageContext.request.contextPath}/manager/BookServlet?action=getBook&id=${book.id}&pageNo=${requestScope.page.pageNo}">修改</a>
                 </td>
                 <td><a class="deleteClass"
-                       href="${pageContext.request.contextPath}/${requestScope.page.url}?action=delete&id=${book.id}&pageNo=${requestScope.page.pageNo}">删除</a>
+                       href="${pageContext.request.contextPath}/manager/BookServlet?action=delete&id=${book.id}&pageNo=${requestScope.page.pageNo}">删除</a>
                 </td>
             </tr>
         </c:forEach>
