@@ -29,7 +29,7 @@ public class ManagerBookServlet extends BaseServlet {
         int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
         //2.调用bookService.page(pageNo,pageSize), 获得Page对象
         Page<Book> page = bookService.page(pageNo, pageSize);
-        page.setUrl("manager/BookServlet"); //设置分页栏的请求地址
+        page.setUrl("manager/BookServlet?action=page"); //设置分页栏的请求地址
         //3.将Page对象保存到request域
         req.setAttribute("page", page);
         //4.将请求转发到页面 /pages/manager/book_manager.jsp
