@@ -13,6 +13,16 @@
 
 *觉得有用的话右上角点一下 `Star` 哦！*
 
+#### 效果展示
+
+订单管理:
+
+![image-20210223153156424](https://gitee.com/iIceCube/Images/raw/master/img/20210223153158.png)
+
+查看订单详情:
+
+![image-20210223153220686](https://gitee.com/iIceCube/Images/raw/master/img/20210223153221.png)
+
 #### 注意事项
 
 * 初始用户名和密码都是 "admin"
@@ -25,3 +35,4 @@
 ![image-20210223151427340](https://gitee.com/iIceCube/Images/raw/master/img/20210223151435.png)
 
 ![image-20210223151511343](https://gitee.com/iIceCube/Images/raw/master/img/20210223151512.png)
+
